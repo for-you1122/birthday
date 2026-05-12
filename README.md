@@ -1,42 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Birthday Universe Pro Max ✨</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Her Birthday Universe ✨</title>
+
+<!-- GOOGLE FONT -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<!-- THREE.JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
 <style>
-body {
+*{
     margin:0;
-    font-family: 'Segoe UI', sans-serif;
-    background:black;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
     overflow:hidden;
+    font-family:'Poppins',sans-serif;
+    background:black;
     color:white;
 }
 
-/* CANVAS BACKGROUND */
-#bg {
+/* 3D BACKGROUND */
+#bg{
     position:fixed;
     top:0;
     left:0;
     width:100%;
     height:100%;
-    z-index:-2;
+    z-index:-10;
 }
 
-/* OVERLAY GRADIENT */
-.overlay {
-    position:fixed;
-    width:100%;
-    height:100%;
-    background: radial-gradient(circle, rgba(0,0,0,0.3), black);
+/* UI LAYER */
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.3),
+        rgba(0,0,0,0.7)
+    );
     z-index:-1;
 }
 
-/* SCENES */
-.scene {
+/* SCREENS */
+.screen{
+    position:absolute;
+    width:100%;
+    height:100%;
     display:none;
-    height:100vh;
     justify-content:center;
     align-items:center;
     flex-direction:column;
@@ -44,103 +60,191 @@ body {
     padding:20px;
 }
 
-.active {
+.active{
     display:flex;
 }
 
-/* TITLE */
-h1 {
-    font-size:3.5em;
-    color:#ff4d6d;
-    animation: glow 2s infinite alternate;
+/* TITLES */
+.main-title{
+    font-size:5rem;
+    font-weight:700;
+    letter-spacing:3px;
+    background:linear-gradient(90deg,#ff4d6d,#ffd166,#ffffff);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    animation:glow 4s infinite alternate;
 }
 
-@keyframes glow {
-    from { text-shadow:0 0 10px #ff4d6d; }
-    to { text-shadow:0 0 40px #ffcc00; }
+@keyframes glow{
+    from{
+        filter:drop-shadow(0 0 10px #ff4d6d);
+    }
+    to{
+        filter:drop-shadow(0 0 30px #ffd166);
+    }
+}
+
+/* SUBTEXT */
+.sub{
+    max-width:700px;
+    margin-top:20px;
+    line-height:1.7;
+    opacity:0.9;
 }
 
 /* BUTTON */
-.btn {
-    padding:15px 30px;
+.btn{
+    margin-top:40px;
+    padding:16px 40px;
     border:none;
-    border-radius:30px;
-    background:#ff4d6d;
+    border-radius:50px;
+    background:linear-gradient(90deg,#ff4d6d,#ff758f);
     color:white;
+    font-size:18px;
     cursor:pointer;
-    margin-top:20px;
-    font-size:16px;
+    transition:0.3s;
 }
 
-/* GIFT SYSTEM */
-.gifts {
+.btn:hover{
+    transform:scale(1.08);
+}
+
+/* NAV */
+.nav{
+    position:fixed;
+    top:20px;
+    left:50%;
+    transform:translateX(-50%);
     display:flex;
     gap:15px;
+    z-index:999;
 }
 
-.gift {
-    width:100px;
-    height:100px;
-    background:linear-gradient(45deg,#ff4d6d,#6a5acd);
-    border-radius:20px;
+.nav button{
+    background:rgba(255,255,255,0.1);
+    border:none;
+    color:white;
+    padding:10px 20px;
+    border-radius:30px;
+    backdrop-filter:blur(10px);
+    cursor:pointer;
+}
+
+/* MEMORY GRID */
+.memory-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    width:90%;
+    max-width:1200px;
+    margin-top:40px;
+}
+
+.memory-card{
+    height:280px;
+    background:rgba(255,255,255,0.08);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:25px;
+    backdrop-filter:blur(15px);
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:40px;
+    font-size:22px;
+    transition:0.4s;
     cursor:pointer;
 }
 
-/* MEMORY */
-.memory {
+.memory-card:hover{
+    transform:translateY(-15px) scale(1.03);
+    background:rgba(255,255,255,0.12);
+}
+
+/* GIFT */
+.gift-wrap{
     display:flex;
-    gap:15px;
+    gap:40px;
     flex-wrap:wrap;
     justify-content:center;
+    margin-top:40px;
 }
 
-.card {
-    width:200px;
-    height:250px;
-    background:rgba(255,255,255,0.1);
-    border-radius:20px;
+.gift{
+    width:170px;
+    height:170px;
+    background:linear-gradient(135deg,#ff4d6d,#6a5acd);
+    border-radius:30px;
     display:flex;
     justify-content:center;
     align-items:center;
-    backdrop-filter: blur(10px);
+    font-size:70px;
     cursor:pointer;
+    transition:0.4s;
+    box-shadow:0 0 40px rgba(255,77,109,0.4);
 }
 
-/* CAKE */
-.cake {
-    font-size:120px;
-    cursor:pointer;
+.gift:hover{
+    transform:rotate(8deg) scale(1.08);
 }
 
 /* LETTER */
-#letter {
-    max-width:600px;
-    font-size:20px;
+#letterText{
+    max-width:900px;
+    line-height:2;
+    font-size:1.3rem;
+    margin-top:40px;
     white-space:pre-line;
 }
 
-/* MODAL */
-#modal {
-    position:fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height:100%;
-    background:rgba(0,0,0,0.8);
-    display:none;
-    justify-content:center;
-    align-items:center;
+/* CAKE */
+.cake{
+    font-size:180px;
+    cursor:pointer;
+    transition:0.3s;
 }
 
-#modalBox {
-    background:#111;
-    padding:30px;
-    border-radius:20px;
-    max-width:400px;
+.cake:hover{
+    transform:scale(1.05);
+}
+
+/* FINAL */
+.final-title{
+    font-size:6rem;
+    background:linear-gradient(90deg,#fff,#ffd166,#ff4d6d);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+/* MUSIC BUTTON */
+.music{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    z-index:999;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    border:none;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+    font-size:22px;
+}
+
+/* MOBILE */
+@media(max-width:768px){
+
+.main-title{
+    font-size:3rem;
+}
+
+.final-title{
+    font-size:3rem;
+}
+
+.cake{
+    font-size:120px;
+}
+
 }
 </style>
 </head>
@@ -150,180 +254,345 @@ h1 {
 <canvas id="bg"></canvas>
 <div class="overlay"></div>
 
+<!-- NAV -->
+<div class="nav">
+    <button onclick="showScreen('home')">Home</button>
+    <button onclick="showScreen('memories')">Memories</button>
+    <button onclick="showScreen('gifts')">Gifts</button>
+    <button onclick="showScreen('cakeScreen')">Cake</button>
+    <button onclick="showScreen('letter')">Letter</button>
+</div>
+
 <!-- MUSIC -->
+<button class="music" onclick="toggleMusic()">🎵</button>
+
 <audio id="music" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-sweet.mp3">
+<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8e0b4f6.mp3?filename=romantic-background-11254.mp3">
 </audio>
 
-<!-- SCENE 1 -->
-<div id="s1" class="scene active">
-    <h1>🎂 Birthday Universe</h1>
-    <p>A cinematic experience created only for you 💖</p>
-    <button class="btn" onclick="start()">Enter Universe</button>
-</div>
+<!-- HOME -->
+<section id="home" class="screen active">
+    <h1 class="main-title">Birthday Universe</h1>
 
-<!-- SCENE 2 MEMORIES -->
-<div id="s2" class="scene">
-    <h2>💖 Memory Universe</h2>
-    <div class="memory">
-        <div class="card" onclick="openModal('First Talk 💬')">Talk</div>
-        <div class="card" onclick="openModal('Late Nights 🌙')">Nights</div>
-        <div class="card" onclick="openModal('Laughs 😂')">Laughs</div>
-        <div class="card" onclick="openModal('Moments ✨')">Moments</div>
+    <p class="sub">
+        This is not just a website.<br>
+        It is a complete universe built from memories, emotions,
+        moments, and wishes made only for one special person.
+    </p>
+
+    <button class="btn" onclick="enterUniverse()">
+        Enter The Universe ✨
+    </button>
+</section>
+
+<!-- MEMORIES -->
+<section id="memories" class="screen">
+
+    <h1 class="main-title">Memory Galaxy 💖</h1>
+
+    <div class="memory-grid">
+
+        <div class="memory-card">
+            First Conversation 💬
+        </div>
+
+        <div class="memory-card">
+            Endless Laughs 😂
+        </div>
+
+        <div class="memory-card">
+            Late Night Talks 🌙
+        </div>
+
+        <div class="memory-card">
+            Beautiful Moments ✨
+        </div>
+
     </div>
-    <button class="btn" onclick="next(3)">Next</button>
-</div>
 
-<!-- SCENE 3 GIFTS -->
-<div id="s3" class="scene">
-    <h2>🎁 Gift Unlock System</h2>
-    <div class="gifts">
-        <div class="gift" onclick="gift(this)">🎁</div>
-        <div class="gift" onclick="gift(this)">🎁</div>
-        <div class="gift" onclick="gift(this)">🎁</div>
+</section>
+
+<!-- GIFTS -->
+<section id="gifts" class="screen">
+
+    <h1 class="main-title">Unlock Gifts 🎁</h1>
+
+    <div class="gift-wrap">
+
+        <div class="gift" onclick="openGift(this)">🎁</div>
+        <div class="gift" onclick="openGift(this)">🎁</div>
+        <div class="gift" onclick="openGift(this)">🎁</div>
+
     </div>
-    <button class="btn" onclick="next(4)">Next</button>
-</div>
 
-<!-- SCENE 4 CAKE -->
-<div id="s4" class="scene">
-    <h2>🎂 Make a Wish</h2>
-    <div class="cake" onclick="cake()">🕯️🕯️🕯️🎂</div>
-</div>
+</section>
 
-<!-- SCENE 5 LETTER -->
-<div id="s5" class="scene">
-    <h2>💌 Letter</h2>
-    <div id="letter"></div>
-    <button class="btn" onclick="final()">Final Surprise</button>
-</div>
+<!-- CAKE -->
+<section id="cakeScreen" class="screen">
+
+    <h1 class="main-title">Make A Wish 🎂</h1>
+
+    <div class="cake" onclick="blowCandles()">
+        🕯️🕯️🕯️🎂
+    </div>
+
+    <p class="sub">
+        Click the cake to blow candles and start fireworks ✨
+    </p>
+
+</section>
+
+<!-- LETTER -->
+<section id="letter" class="screen">
+
+    <h1 class="main-title">A Letter 💌</h1>
+
+    <div id="letterText"></div>
+
+    <button class="btn" onclick="showScreen('final')">
+        Final Surprise ✨
+    </button>
+
+</section>
 
 <!-- FINAL -->
-<div id="s6" class="scene">
-    <h1>🎆 SURPRISE 🎆</h1>
-    <p>You just entered a universe made of memories & emotions 💖</p>
-</div>
+<section id="final" class="screen">
 
-<!-- MODAL -->
-<div id="modal">
-    <div id="modalBox"></div>
-</div>
+    <h1 class="final-title">HAPPY BIRTHDAY ❤️</h1>
+
+    <p class="sub">
+        You deserve happiness, peace, success, memories,
+        laughter, adventures, and every beautiful thing life can offer.
+        <br><br>
+        Stay smiling always ✨
+    </p>
+
+</section>
 
 <script>
 
-/* ===== CANVAS BACKGROUND ===== */
-const canvas = document.getElementById("bg");
-const ctx = canvas.getContext("2d");
+/* =========================================================
+   THREE.JS GALAXY BACKGROUND
+========================================================= */
 
-canvas.width = innerWidth;
-canvas.height = innerHeight;
+const scene = new THREE.Scene();
 
-let stars = [];
+const camera = new THREE.PerspectiveCamera(
+    75,
+    window.innerWidth/window.innerHeight,
+    0.1,
+    1000
+);
 
-for(let i=0;i<200;i++){
-    stars.push({
-        x:Math.random()*canvas.width,
-        y:Math.random()*canvas.height,
-        r:Math.random()*2,
-        d:Math.random()*1
-    });
+const renderer = new THREE.WebGLRenderer({
+    canvas:document.getElementById('bg'),
+    antialias:true
+});
+
+renderer.setSize(window.innerWidth,window.innerHeight);
+
+camera.position.z = 5;
+
+/* STARS */
+
+const starGeometry = new THREE.BufferGeometry();
+const starCount = 12000;
+
+const positions = new Float32Array(starCount * 3);
+
+for(let i=0;i<starCount*3;i++){
+    positions[i] = (Math.random()-0.5)*2000;
 }
 
-function drawStars(){
-    ctx.clearRect(0,0,canvas.width,canvas.height);
-    ctx.fillStyle="white";
+starGeometry.setAttribute(
+    'position',
+    new THREE.BufferAttribute(positions,3)
+);
 
-    stars.forEach(s=>{
-        ctx.beginPath();
-        ctx.arc(s.x,s.y,s.r,0,Math.PI*2);
-        ctx.fill();
+const starMaterial = new THREE.PointsMaterial({
+    color:0xffffff,
+    size:0.7
+});
 
-        s.y += s.d;
-        if(s.y>canvas.height) s.y=0;
-    });
+const stars = new THREE.Points(starGeometry,starMaterial);
 
-    requestAnimationFrame(drawStars);
+scene.add(stars);
+
+/* ANIMATE */
+
+function animate(){
+
+    requestAnimationFrame(animate);
+
+    stars.rotation.y += 0.0005;
+    stars.rotation.x += 0.0002;
+
+    renderer.render(scene,camera);
 }
-drawStars();
 
-/* ===== NAV ===== */
-function show(n){
-    document.querySelectorAll(".scene").forEach(s=>s.classList.remove("active"));
-    document.getElementById("s"+n).classList.add("active");
+animate();
+
+/* RESIZE */
+
+window.addEventListener('resize',()=>{
+
+    camera.aspect = window.innerWidth/window.innerHeight;
+
+    camera.updateProjectionMatrix();
+
+    renderer.setSize(window.innerWidth,window.innerHeight);
+
+});
+
+/* =========================================================
+   SCREEN SYSTEM
+========================================================= */
+
+function showScreen(id){
+
+    document.querySelectorAll('.screen')
+    .forEach(s=>s.classList.remove('active'));
+
+    document.getElementById(id)
+    .classList.add('active');
+
 }
 
-function start(){
-    document.getElementById("music").play();
-    show(2);
+/* =========================================================
+   ENTER
+========================================================= */
+
+function enterUniverse(){
+
+    showScreen('memories');
+
+    document.getElementById('music').play();
+
     typeLetter();
+
 }
 
-function next(n){ show(n); }
+/* =========================================================
+   GIFTS
+========================================================= */
 
-/* ===== GIFTS ===== */
-function gift(el){
-    el.innerHTML="💖";
-    el.style.background="green";
+function openGift(el){
+
+    el.innerHTML = "💖";
+
+    el.style.background = "linear-gradient(135deg,#00ff95,#00c9ff)";
+
     explode();
+
 }
 
-/* ===== CAKE FIREWORK ===== */
-function cake(){
-    explode();
-    document.querySelector(".cake").innerHTML="🎂✨";
-}
+/* =========================================================
+   FIREWORK EFFECT
+========================================================= */
 
-/* ===== EXPLOSION ===== */
 function explode(){
-    for(let i=0;i<80;i++){
-        let e=document.createElement("div");
-        e.innerHTML="✨";
-        e.style.position="fixed";
-        e.style.left=Math.random()*100+"vw";
-        e.style.top="50vh";
-        document.body.appendChild(e);
 
-        setTimeout(()=>e.remove(),1500);
+    for(let i=0;i<120;i++){
+
+        let spark = document.createElement('div');
+
+        spark.innerHTML = "✨";
+
+        spark.style.position='fixed';
+        spark.style.left=Math.random()*100+'vw';
+        spark.style.top=Math.random()*100+'vh';
+        spark.style.fontSize='20px';
+
+        document.body.appendChild(spark);
+
+        setTimeout(()=>{
+            spark.remove();
+        },1500);
+
     }
+
 }
 
-/* ===== LETTER ===== */
+/* =========================================================
+   CAKE
+========================================================= */
+
+function blowCandles(){
+
+    document.querySelector('.cake').innerHTML="🎂✨";
+
+    explode();
+
+    setTimeout(()=>{
+        showScreen('letter');
+    },2000);
+
+}
+
+/* =========================================================
+   LETTER
+========================================================= */
+
 function typeLetter(){
-    let text =
+
+const text =
+
 `Happy Birthday ❤️
 
-This is not just a website...
-It is a universe built for your memories.
+This website is not just code.
 
-You deserve happiness, peace, and everything beautiful.
+It is a universe built from emotions,
+memories, moments, and wishes.
 
-Stay smiling always ✨`;
+You deserve happiness,
+beautiful memories,
+peace,
+success,
+and every good thing life can offer.
 
-    let i=0;
-    let el=document.getElementById("letter");
+May your smile always stay bright ✨`;
 
-    let t=setInterval(()=>{
-        el.innerHTML+=text[i];
-        i++;
-        if(i>=text.length) clearInterval(t);
-    },40);
+let i = 0;
+
+const el = document.getElementById('letterText');
+
+el.innerHTML = "";
+
+const interval = setInterval(()=>{
+
+    el.innerHTML += text[i];
+
+    i++;
+
+    if(i >= text.length){
+
+        clearInterval(interval);
+
+    }
+
+},35);
+
 }
 
-/* ===== FINAL ===== */
-function final(){
-    show(6);
-    explode();
-}
+/* =========================================================
+   MUSIC
+========================================================= */
 
-/* ===== MODAL ===== */
-function openModal(text){
-    document.getElementById("modal").style.display="flex";
-    document.getElementById("modalBox").innerHTML=text;
-}
+function toggleMusic(){
 
-document.getElementById("modal").onclick=()=> {
-    document.getElementById("modal").style.display="none";
-};
+    const m = document.getElementById('music');
+
+    if(m.paused){
+
+        m.play();
+
+    }else{
+
+        m.pause();
+
+    }
+
+}
 
 </script>
 
