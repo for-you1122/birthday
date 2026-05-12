@@ -13,7 +13,7 @@
 <style>
 
 /* =========================================================
-   GLOBAL
+GLOBAL
 ========================================================= */
 
 *{
@@ -22,17 +22,11 @@ padding:0;
 box-sizing:border-box;
 }
 
-html{
-scroll-behavior:smooth;
-}
-
 body{
 
-overflow-x:hidden;
-overflow-y:auto;
-
 font-family:'Poppins',sans-serif;
-color:white;
+
+overflow-x:hidden;
 
 background:
 linear-gradient(
@@ -43,10 +37,12 @@ linear-gradient(
 #24122d
 );
 
+color:white;
+
 }
 
 /* =========================================================
-   GLOW LIGHTS
+LIGHTS
 ========================================================= */
 
 body::before,
@@ -74,7 +70,7 @@ background:#ff4d88;
 top:-150px;
 left:-120px;
 
-opacity:0.22;
+opacity:0.25;
 
 }
 
@@ -90,7 +86,7 @@ opacity:0.15;
 }
 
 /* =========================================================
-   PARTICLES
+PARTICLES
 ========================================================= */
 
 .particle{
@@ -100,11 +96,11 @@ position:fixed;
 width:6px;
 height:6px;
 
-background:white;
-
 border-radius:50%;
 
-opacity:0.22;
+background:white;
+
+opacity:0.2;
 
 z-index:-2;
 
@@ -125,7 +121,7 @@ transform:translateY(-20vh);
 }
 
 /* =========================================================
-   SCENES
+SCENE
 ========================================================= */
 
 .scene{
@@ -138,11 +134,9 @@ justify-content:center;
 align-items:center;
 flex-direction:column;
 
-padding:80px 30px;
+padding:80px 25px;
 
 text-align:center;
-
-opacity:0;
 
 }
 
@@ -150,13 +144,11 @@ opacity:0;
 
 display:flex;
 
-opacity:1;
-
-animation:fadeScene 1s ease forwards;
+animation:sceneFade 1s ease forwards;
 
 }
 
-@keyframes fadeScene{
+@keyframes sceneFade{
 
 from{
 opacity:0;
@@ -171,7 +163,7 @@ transform:translateY(0);
 }
 
 /* =========================================================
-   TEXT
+TEXT
 ========================================================= */
 
 .label{
@@ -182,13 +174,13 @@ opacity:0.7;
 
 margin-bottom:25px;
 
-font-size:13px;
+font-size:12px;
 
 }
 
 .title{
 
-font-size:7rem;
+font-size:5rem;
 
 line-height:0.9;
 
@@ -209,7 +201,7 @@ linear-gradient(
 
 .text{
 
-max-width:760px;
+max-width:700px;
 
 margin-top:35px;
 
@@ -217,35 +209,19 @@ line-height:2;
 
 opacity:0.88;
 
-font-size:18px;
-
-animation:textFade 2s ease forwards;
-
-}
-
-@keyframes textFade{
-
-from{
-opacity:0;
-transform:translateY(30px);
-}
-
-to{
-opacity:0.88;
-transform:translateY(0);
-}
+font-size:17px;
 
 }
 
 /* =========================================================
-   BUTTON
+BUTTON
 ========================================================= */
 
 .btn{
 
-margin-top:55px;
+margin-top:50px;
 
-padding:20px 54px;
+padding:18px 50px;
 
 border:none;
 
@@ -259,11 +235,11 @@ letter-spacing:4px;
 
 cursor:pointer;
 
+font-size:13px;
+
 backdrop-filter:blur(20px);
 
 transition:0.4s;
-
-font-size:14px;
 
 }
 
@@ -273,35 +249,36 @@ transform:
 translateY(-5px)
 scale(1.03);
 
-background:rgba(255,255,255,0.15);
-
-box-shadow:
-0 10px 40px rgba(255,255,255,0.1);
+background:rgba(255,255,255,0.14);
 
 }
 
 /* =========================================================
-   MEMORIES
+MEMORIES
 ========================================================= */
 
 .memory-wrap{
 
 display:flex;
 
-gap:30px;
+flex-direction:column;
 
-flex-wrap:wrap;
+gap:25px;
 
-justify-content:center;
+margin-top:50px;
 
-margin-top:60px;
+width:100%;
+
+align-items:center;
 
 }
 
 .memory{
 
-width:280px;
-height:380px;
+width:100%;
+max-width:350px;
+
+height:450px;
 
 border-radius:30px;
 
@@ -309,9 +286,9 @@ overflow:hidden;
 
 position:relative;
 
-transition:0.5s;
-
 cursor:pointer;
+
+transition:0.5s;
 
 box-shadow:
 0 20px 60px rgba(0,0,0,0.35);
@@ -321,8 +298,8 @@ box-shadow:
 .memory:hover{
 
 transform:
-translateY(-12px)
-scale(1.03);
+translateY(-10px)
+scale(1.02);
 
 }
 
@@ -353,7 +330,7 @@ background:
 linear-gradient(
 to top,
 rgba(0,0,0,0.95),
-rgba(0,0,0,0.1)
+rgba(0,0,0,0.15)
 );
 
 display:flex;
@@ -366,18 +343,18 @@ padding:30px;
 
 .memory-overlay h3{
 
-font-size:22px;
+font-size:24px;
 
 }
 
 /* =========================================================
-   LETTER
+LETTER
 ========================================================= */
 
 .letter-box{
 
-width:90%;
-max-width:950px;
+width:100%;
+max-width:850px;
 
 max-height:75vh;
 
@@ -387,11 +364,11 @@ background:rgba(255,255,255,0.05);
 
 border:1px solid rgba(255,255,255,0.08);
 
-border-radius:40px;
+border-radius:35px;
 
-padding:70px;
+padding:35px;
 
-backdrop-filter:blur(25px);
+backdrop-filter:blur(20px);
 
 }
 
@@ -399,50 +376,52 @@ backdrop-filter:blur(25px);
 
 white-space:pre-line;
 
-line-height:2.3;
+line-height:2.2;
 
-font-size:18px;
+font-size:17px;
 
 text-align:left;
 
 }
 
 /* =========================================================
-   FLOWERS
+GIFTS
 ========================================================= */
 
 .gift-wrap{
 
 display:flex;
 
-gap:35px;
+flex-direction:column;
 
-flex-wrap:wrap;
+gap:25px;
 
-justify-content:center;
+margin-top:50px;
 
-margin-top:60px;
+align-items:center;
+
+width:100%;
 
 }
 
 .gift{
 
-width:220px;
-height:300px;
+width:100%;
+max-width:350px;
+
+height:420px;
 
 border-radius:35px;
 
 overflow:hidden;
 
-cursor:pointer;
-
 position:relative;
+
+cursor:pointer;
 
 transition:0.5s;
 
-background:rgba(255,255,255,0.06);
-
-border:1px solid rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.05);
 
 }
 
@@ -460,8 +439,8 @@ transition:0.5s;
 .gift:hover{
 
 transform:
-translateY(-12px)
-scale(1.03);
+translateY(-10px)
+scale(1.02);
 
 }
 
@@ -479,26 +458,26 @@ bottom:0;
 
 width:100%;
 
-padding:20px;
+padding:25px;
 
 background:
 linear-gradient(
 to top,
-rgba(0,0,0,0.9),
+rgba(0,0,0,0.95),
 transparent
 );
 
-font-size:18px;
+font-size:20px;
 
 }
 
 /* =========================================================
-   FINAL
+FINAL
 ========================================================= */
 
 .final-title{
 
-font-size:8rem;
+font-size:5rem;
 
 line-height:0.9;
 
@@ -517,31 +496,155 @@ linear-gradient(
 
 .final-text{
 
-max-width:760px;
+max-width:700px;
 
-margin-top:40px;
+margin-top:35px;
 
 line-height:2;
 
-opacity:0.88;
+font-size:17px;
 
-font-size:18px;
+opacity:0.88;
 
 }
 
 /* =========================================================
-   MUSIC BUTTON
+POPUP
+========================================================= */
+
+.popup{
+
+position:fixed;
+
+inset:0;
+
+background:rgba(0,0,0,0.7);
+
+backdrop-filter:blur(10px);
+
+display:none;
+
+justify-content:center;
+align-items:center;
+
+padding:20px;
+
+z-index:99999;
+
+}
+
+.popup-box{
+
+width:100%;
+max-width:420px;
+
+background:
+linear-gradient(
+135deg,
+rgba(255,255,255,0.08),
+rgba(255,255,255,0.03)
+);
+
+border:1px solid rgba(255,255,255,0.1);
+
+border-radius:35px;
+
+padding:35px;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.popup-box h2{
+
+font-size:30px;
+
+margin-bottom:20px;
+
+background:
+linear-gradient(
+90deg,
+#ffd166,
+#ff9ac2
+);
+
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+
+}
+
+.popup-box p{
+
+line-height:2;
+
+font-size:16px;
+
+opacity:0.9;
+
+}
+
+.close{
+
+position:absolute;
+
+top:15px;
+right:20px;
+
+font-size:35px;
+
+cursor:pointer;
+
+}
+
+/* =========================================================
+ROSES
+========================================================= */
+
+.rose{
+
+position:fixed;
+
+top:-50px;
+
+font-size:25px;
+
+pointer-events:none;
+
+z-index:999999;
+
+animation:roseFall linear forwards;
+
+}
+
+@keyframes roseFall{
+
+to{
+
+transform:
+translateY(110vh)
+rotate(360deg);
+
+opacity:0;
+
+}
+
+}
+
+/* =========================================================
+MUSIC BUTTON
 ========================================================= */
 
 .music{
 
 position:fixed;
 
-right:30px;
-bottom:30px;
+right:20px;
+bottom:20px;
 
-width:70px;
-height:70px;
+width:65px;
+height:65px;
 
 border-radius:50%;
 
@@ -555,40 +658,26 @@ font-size:20px;
 
 cursor:pointer;
 
-backdrop-filter:blur(20px);
-
 z-index:999;
 
 }
 
 /* =========================================================
-   MOBILE
+MOBILE
 ========================================================= */
 
-@media(max-width:900px){
+@media(max-width:768px){
 
 .title{
-font-size:4rem;
+font-size:3.5rem;
 }
 
 .final-title{
-font-size:4rem;
+font-size:3.5rem;
 }
 
 .text{
 font-size:15px;
-}
-
-.memory{
-width:90%;
-}
-
-.gift{
-width:90%;
-}
-
-.letter-box{
-padding:35px;
 }
 
 }
@@ -599,12 +688,30 @@ padding:35px;
 <body>
 
 <!-- ======================================================
-     FLOATING PARTICLES
+POPUP
+======================================================= -->
+
+<div id="popup" class="popup">
+
+<div class="popup-box">
+
+<span class="close" onclick="closePopup()">×</span>
+
+<h2 id="popupTitle"></h2>
+
+<p id="popupText"></p>
+
+</div>
+
+</div>
+
+<!-- ======================================================
+PARTICLES
 ======================================================= -->
 
 <script>
 
-for(let i=0;i<50;i++){
+for(let i=0;i<45;i++){
 
 const particle =
 document.createElement('div');
@@ -627,7 +734,7 @@ document.body.appendChild(particle);
 </script>
 
 <!-- ======================================================
-     SCENE 1
+SCENE 1
 ======================================================= -->
 
 <section class="scene active" id="scene1">
@@ -650,10 +757,6 @@ your smile,
 your happiness,
 and the beautiful person you are ✨
 
-May your life always stay beautiful,
-peaceful,
-and full of unforgettable memories.
-
 </p>
 
 <button class="btn"
@@ -666,7 +769,7 @@ ENTER THE EXPERIENCE
 </section>
 
 <!-- ======================================================
-     SCENE 2 MEMORIES
+SCENE 2 MEMORIES
 ======================================================= -->
 
 <section class="scene" id="scene2">
@@ -683,7 +786,10 @@ MEMORIES
 <div class="memory-wrap">
 
 <div class="memory"
-onclick="showMessage('Your smile in this memory was unforgettable ❤️')">
+onclick="memoryPopup(
+'Beautiful Moments ❤️',
+'Your smile is honestly unforgettable. The kind of smile that stays in someone’s mind long after the moment passes. Every time you smiled in this memory, everything around felt lighter and happier ✨'
+)">
 
 <img src="assets/photos/photo1.jpg">
 
@@ -694,23 +800,29 @@ onclick="showMessage('Your smile in this memory was unforgettable ❤️')">
 </div>
 
 <div class="memory"
-onclick="showMessage('One of my favorite memories ✨')">
+onclick="memoryPopup(
+'Beautiful Energy ✨',
+'There is something about your energy that feels peaceful and beautiful. The way you talk, laugh, and exist naturally makes moments feel special. Some people simply carry warmth within them — and you are one of them ❤️'
+)">
 
 <img src="assets/photos/photo2.jpg">
 
 <div class="memory-overlay">
-<h3>Your Beautiful Energy ✨</h3>
+<h3>Beautiful Energy ✨</h3>
 </div>
 
 </div>
 
 <div class="memory"
-onclick="showMessage('A memory that always makes me smile 🌸')">
+onclick="memoryPopup(
+'Forever Memories 🌸',
+'Your smile, your personality, your caring nature, your laughter — all of it creates memories that never really fade. Some people are remembered because of moments. But some are remembered because of how they make people feel ❤️'
+)">
 
 <img src="assets/photos/photo3.jpg">
 
 <div class="memory-overlay">
-<h3>Forever Memorable 🌸</h3>
+<h3>Forever Memories 🌸</h3>
 </div>
 
 </div>
@@ -727,7 +839,7 @@ CONTINUE
 </section>
 
 <!-- ======================================================
-     SCENE 3 LETTER
+SCENE 3 LETTER
 ======================================================= -->
 
 <section class="scene" id="scene3">
@@ -752,7 +864,7 @@ OPEN FLOWERS
 </section>
 
 <!-- ======================================================
-     SCENE 4 FLOWERS
+SCENE 4 FLOWERS
 ======================================================= -->
 
 <section class="scene" id="scene4">
@@ -769,7 +881,7 @@ SURPRISES
 <div class="gift-wrap">
 
 <div class="gift"
-onclick="openGift(this)">
+onclick="roseRain()">
 
 <img src="assets/gifts/rose.jpg">
 
@@ -780,7 +892,10 @@ Roses For You 🌹
 </div>
 
 <div class="gift"
-onclick="openGift(this)">
+onclick="memoryPopup(
+'A Bouquet Of Happiness 💐',
+'I genuinely hope your life is always filled with happiness, peace, beautiful memories, success, and people who truly value your heart ❤️'
+)">
 
 <img src="assets/gifts/bouquet.jpg">
 
@@ -791,7 +906,10 @@ A Bouquet Of Happiness 💐
 </div>
 
 <div class="gift"
-onclick="openGift(this)">
+onclick="memoryPopup(
+'Beautiful Like You ✨',
+'No flower, no sunset, and no beautiful thing in this world could ever truly compare to your beauty — not just outside, but the beauty of your heart, smile, and soul ❤️'
+)">
 
 <img src="assets/gifts/tulips.jpg">
 
@@ -813,7 +931,7 @@ FINAL WISH
 </section>
 
 <!-- ======================================================
-     SCENE 5 FINAL
+SCENE 5 FINAL
 ======================================================= -->
 
 <section class="scene" id="scene5">
@@ -843,7 +961,7 @@ parts of my memories ❤️
 </section>
 
 <!-- ======================================================
-     MUSIC
+MUSIC
 ======================================================= -->
 
 <button class="music"
@@ -858,63 +976,26 @@ onclick="toggleMusic()">
 </audio>
 
 <!-- ======================================================
-     JAVASCRIPT
+JAVASCRIPT
 ======================================================= -->
 
 <script>
 
 /* =========================================================
-   PAGE ANIMATION
-========================================================= */
-
-gsap.from('.title',{
-
-y:80,
-opacity:0,
-duration:1.8,
-ease:'power3.out'
-
-});
-
-gsap.from('.text',{
-
-y:40,
-opacity:0,
-delay:0.5,
-duration:1.8
-
-});
-
-gsap.from('.btn',{
-
-y:30,
-opacity:0,
-delay:1,
-duration:1.5
-
-});
-
-/* =========================================================
-   SCENE CHANGE
+SCENE CHANGE
 ========================================================= */
 
 function nextScene(currentId,nextId){
 
-const current =
-document.getElementById(currentId);
+document.getElementById(currentId)
+.classList.remove('active');
 
-const next =
-document.getElementById(nextId);
-
-current.classList.remove('active');
-
-next.classList.add('active');
+document.getElementById(nextId)
+.classList.add('active');
 
 window.scrollTo({
-
 top:0,
 behavior:'smooth'
-
 });
 
 document.getElementById('music').play();
@@ -925,14 +1006,14 @@ setTimeout(()=>{
 
 typeLetter();
 
-},500);
+},400);
 
 }
 
 }
 
 /* =========================================================
-   LETTER TYPE
+LETTER
 ========================================================= */
 
 const text = `
@@ -977,7 +1058,7 @@ document.getElementById('letter')
 
 i++;
 
-setTimeout(type,38);
+setTimeout(type,35);
 
 }
 
@@ -994,76 +1075,82 @@ type();
 }
 
 /* =========================================================
-   MEMORY POPUP
+POPUP
 ========================================================= */
 
-function showMessage(text){
+function memoryPopup(title,text){
 
-alert(text);
+document.getElementById('popup')
+.style.display='flex';
 
-}
+document.getElementById('popupTitle')
+.innerHTML = title;
 
-/* =========================================================
-   FLOWER EFFECT
-========================================================= */
+document.getElementById('popupText')
+.innerHTML = text;
 
-function openGift(el){
+gsap.from('.popup-box',{
 
-explode();
-
-el.style.transform='scale(1.06)';
-
-}
-
-/* =========================================================
-   SPARKLES
-========================================================= */
-
-function explode(){
-
-for(let i=0;i<70;i++){
-
-let spark =
-document.createElement('div');
-
-spark.innerHTML='✨';
-
-spark.style.position='fixed';
-
-spark.style.left=
-Math.random()*100+'vw';
-
-spark.style.top=
-Math.random()*100+'vh';
-
-spark.style.fontSize='20px';
-
-spark.style.pointerEvents='none';
-
-spark.style.zIndex='9999';
-
-document.body.appendChild(spark);
-
-gsap.to(spark,{
-
-y:-120,
+y:80,
 opacity:0,
-duration:1.5,
-
-onComplete:()=>{
-
-spark.remove();
-
-}
+duration:0.8,
+ease:'power3.out'
 
 });
 
 }
 
+/* =========================================================
+CLOSE POPUP
+========================================================= */
+
+function closePopup(){
+
+document.getElementById('popup')
+.style.display='none';
+
 }
 
 /* =========================================================
-   MUSIC
+ROSE RAIN
+========================================================= */
+
+function roseRain(){
+
+memoryPopup(
+'Roses For You 🌹',
+'These roses are for your beautiful smile, your beautiful heart, and the happiness you bring into people’s lives ❤️'
+);
+
+for(let i=0;i<50;i++){
+
+let rose =
+document.createElement('div');
+
+rose.classList.add('rose');
+
+rose.innerHTML='🌹';
+
+rose.style.left =
+Math.random()*100 + 'vw';
+
+rose.style.animationDuration =
+3 + Math.random()*5 + 's';
+
+document.body.appendChild(rose);
+
+setTimeout(()=>{
+
+rose.remove();
+
+},7000);
+
+}
+
+}
+
+/* =========================================================
+MUSIC
 ========================================================= */
 
 function toggleMusic(){
