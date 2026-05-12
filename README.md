@@ -6,10 +6,8 @@
 
 <title>Birthday Universe ✨</title>
 
-<!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
 <style>
@@ -22,10 +20,6 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
 }
 
 body{
@@ -83,14 +77,14 @@ body::after{
     background:#ffd166;
 
     bottom:-180px;
-    right:-100px;
+    right:-120px;
 
     opacity:0.15;
 
 }
 
 /* =========================================================
-   PARTICLES
+   FLOATING PARTICLES
 ========================================================= */
 
 .particle{
@@ -106,7 +100,7 @@ body::after{
 
     opacity:0.22;
 
-    z-index:-3;
+    z-index:-2;
 
     animation:float linear infinite;
 
@@ -131,6 +125,7 @@ body::after{
 .scene{
 
     position:absolute;
+
     inset:0;
 
     display:none;
@@ -143,13 +138,17 @@ body::after{
 
     padding:40px;
 
-    transition:1s;
+    opacity:0;
 
 }
 
 .scene.active{
 
     display:flex;
+
+    opacity:1;
+
+    z-index:10;
 
 }
 
@@ -160,8 +159,6 @@ body::after{
 .label{
 
     letter-spacing:8px;
-
-    text-transform:uppercase;
 
     opacity:0.7;
 
@@ -232,8 +229,6 @@ body::after{
 
     transition:0.4s;
 
-    font-size:14px;
-
 }
 
 .btn:hover{
@@ -244,13 +239,10 @@ body::after{
 
     background:rgba(255,255,255,0.15);
 
-    box-shadow:
-    0 10px 40px rgba(255,255,255,0.12);
-
 }
 
 /* =========================================================
-   MEMORY SECTION
+   MEMORIES
 ========================================================= */
 
 .memory-wrap{
@@ -314,7 +306,7 @@ body::after{
     linear-gradient(
         to top,
         rgba(0,0,0,0.95),
-        rgba(0,0,0,0.15)
+        rgba(0,0,0,0.1)
     );
 
     display:flex;
@@ -327,7 +319,7 @@ body::after{
 
 .memory-overlay h3{
 
-    font-size:24px;
+    font-size:22px;
 
 }
 
@@ -344,11 +336,11 @@ body::after{
 
     border:1px solid rgba(255,255,255,0.08);
 
-    backdrop-filter:blur(30px);
-
     border-radius:40px;
 
     padding:70px;
+
+    backdrop-filter:blur(25px);
 
 }
 
@@ -360,12 +352,10 @@ body::after{
 
     font-size:18px;
 
-    opacity:0.9;
-
 }
 
 /* =========================================================
-   GIFTS
+   FLOWER GIFTS
 ========================================================= */
 
 .gift-wrap{
@@ -374,33 +364,41 @@ body::after{
 
     gap:35px;
 
-    margin-top:60px;
-
     flex-wrap:wrap;
 
     justify-content:center;
+
+    margin-top:60px;
 
 }
 
 .gift{
 
-    width:180px;
-    height:180px;
+    width:220px;
+    height:300px;
 
     border-radius:35px;
+
+    overflow:hidden;
+
+    cursor:pointer;
+
+    position:relative;
+
+    transition:0.5s;
 
     background:rgba(255,255,255,0.06);
 
     border:1px solid rgba(255,255,255,0.08);
 
-    display:flex;
+}
 
-    justify-content:center;
-    align-items:center;
+.gift img{
 
-    font-size:70px;
+    width:100%;
+    height:100%;
 
-    cursor:pointer;
+    object-fit:cover;
 
     transition:0.5s;
 
@@ -409,8 +407,33 @@ body::after{
 .gift:hover{
 
     transform:
-    translateY(-10px)
-    rotate(4deg);
+    translateY(-12px)
+    scale(1.03);
+
+}
+
+.gift:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.gift-text{
+
+    position:absolute;
+
+    bottom:0;
+
+    width:100%;
+
+    padding:20px;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,0.9),
+        transparent
+    );
 
 }
 
@@ -450,7 +473,7 @@ body::after{
 }
 
 /* =========================================================
-   MUSIC BUTTON
+   MUSIC
 ========================================================= */
 
 .music{
@@ -475,8 +498,6 @@ body::after{
 
     cursor:pointer;
 
-    backdrop-filter:blur(20px);
-
     z-index:999;
 
 }
@@ -495,11 +516,11 @@ body::after{
     font-size:4rem;
 }
 
-.text{
-    font-size:15px;
+.memory{
+    width:90%;
 }
 
-.memory{
+.gift{
     width:90%;
 }
 
@@ -515,28 +536,28 @@ body::after{
 <body>
 
 <!-- ======================================================
-     FLOATING PARTICLES
+     PARTICLES
 ======================================================= -->
 
 <script>
 
 for(let i=0;i<50;i++){
 
-    const particle =
-    document.createElement('div');
+const particle =
+document.createElement('div');
 
-    particle.classList.add('particle');
+particle.classList.add('particle');
 
-    particle.style.left =
-    Math.random()*100 + 'vw';
+particle.style.left =
+Math.random()*100 + 'vw';
 
-    particle.style.animationDuration =
-    6 + Math.random()*10 + 's';
+particle.style.animationDuration =
+5 + Math.random()*10 + 's';
 
-    particle.style.opacity =
-    Math.random()*0.5;
+particle.style.opacity =
+Math.random()*0.5;
 
-    document.body.appendChild(particle);
+document.body.appendChild(particle);
 
 }
 
@@ -564,13 +585,7 @@ Happy Birthday ❤️
 Today is all about celebrating you,
 your smile,
 your happiness,
-and the beautiful person you are.
-
-May this year bring you
-beautiful memories,
-peaceful moments,
-endless laughter,
-and everything your heart truly deserves ✨
+and the beautiful person you are ✨
 
 </p>
 
@@ -584,7 +599,7 @@ ENTER THE EXPERIENCE
 </section>
 
 <!-- ======================================================
-     SCENE 2
+     SCENE 2 MEMORIES
 ======================================================= -->
 
 <section class="scene" id="scene2">
@@ -600,7 +615,8 @@ MEMORIES
 
 <div class="memory-wrap">
 
-<div class="memory">
+<div class="memory"
+onclick="showMessage('Your smile in this memory was unforgettable ❤️')">
 
 <img src="assets/photos/photo1.jpg">
 
@@ -610,7 +626,8 @@ MEMORIES
 
 </div>
 
-<div class="memory">
+<div class="memory"
+onclick="showMessage('Some conversations stay forever ✨')">
 
 <img src="assets/photos/photo2.jpg">
 
@@ -620,7 +637,8 @@ MEMORIES
 
 </div>
 
-<div class="memory">
+<div class="memory"
+onclick="showMessage('One of my favorite memories 🌸')">
 
 <img src="assets/photos/photo3.jpg">
 
@@ -642,7 +660,7 @@ CONTINUE
 </section>
 
 <!-- ======================================================
-     SCENE 3
+     SCENE 3 LETTER
 ======================================================= -->
 
 <section class="scene" id="scene3">
@@ -660,20 +678,20 @@ A LETTER
 <button class="btn"
 onclick="nextScene('scene3','scene4')">
 
-OPEN SURPRISE
+OPEN FLOWERS
 
 </button>
 
 </section>
 
 <!-- ======================================================
-     SCENE 4
+     SCENE 4 FLOWERS
 ======================================================= -->
 
 <section class="scene" id="scene4">
 
 <p class="label">
-SURPRISES
+FLOWERS FOR YOU
 </p>
 
 <h1 class="title">
@@ -683,16 +701,37 @@ SURPRISES
 
 <div class="gift-wrap">
 
-<div class="gift" onclick="openGift(this)">
-🎁
+<div class="gift"
+onclick="openGift(this)">
+
+<img src="assets/gifts/rose.jpg">
+
+<div class="gift-text">
+Roses For You 🌹
 </div>
 
-<div class="gift" onclick="openGift(this)">
-🎁
 </div>
 
-<div class="gift" onclick="openGift(this)">
-🎁
+<div class="gift"
+onclick="openGift(this)">
+
+<img src="assets/gifts/bouquet.jpg">
+
+<div class="gift-text">
+A Bouquet Of Happiness 💐
+</div>
+
+</div>
+
+<div class="gift"
+onclick="openGift(this)">
+
+<img src="assets/gifts/tulips.jpg">
+
+<div class="gift-text">
+Beautiful Like You ✨
+</div>
+
 </div>
 
 </div>
@@ -707,7 +746,7 @@ FINAL WISH
 </section>
 
 <!-- ======================================================
-     SCENE 5
+     SCENE 5 FINAL
 ======================================================= -->
 
 <section class="scene" id="scene5">
@@ -726,12 +765,11 @@ May your heart always find peace.
 May your dreams become reality.
 
 And may you always be surrounded
-by people and moments that truly deserve you.
+by beautiful moments and people
+who truly deserve you ✨
 
-Because honestly...
-
-the world became a little more beautiful
-the day you were born ✨
+Forever one of the most beautiful
+parts of my memories ❤️
 
 </p>
 
@@ -741,49 +779,58 @@ the day you were born ✨
      MUSIC
 ======================================================= -->
 
-<button class="music" onclick="toggleMusic()">
+<button class="music"
+onclick="toggleMusic()">
+
 🎵
+
 </button>
 
 <audio id="music" loop>
-<source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8e0b4f6.mp3?filename=romantic-background-11254.mp3">
+
+<source src="assets/music/song.mp3">
+
 </audio>
+
+<!-- ======================================================
+     JAVASCRIPT
+======================================================= -->
 
 <script>
 
 /* =========================================================
-   HERO ANIMATION
+   OPENING ANIMATION
 ========================================================= */
 
 gsap.from('.title',{
 
-    y:80,
-    opacity:0,
-    duration:1.8,
-    ease:'power3.out'
+y:80,
+opacity:0,
+duration:1.8,
+ease:'power3.out'
 
 });
 
 gsap.from('.text',{
 
-    y:40,
-    opacity:0,
-    delay:0.5,
-    duration:1.8
+y:40,
+opacity:0,
+delay:0.5,
+duration:1.8
 
 });
 
 gsap.from('.btn',{
 
-    y:30,
-    opacity:0,
-    delay:1,
-    duration:1.5
+y:30,
+opacity:0,
+delay:1,
+duration:1.5
 
 });
 
 /* =========================================================
-   SCENE CHANGE
+   WORKING SCENE TRANSITION
 ========================================================= */
 
 function nextScene(currentId,nextId){
@@ -794,42 +841,60 @@ document.getElementById(currentId);
 const next =
 document.getElementById(nextId);
 
+/* PREPARE NEXT */
+
+next.style.display='flex';
+
+next.style.opacity='0';
+
+next.style.transform='translateY(40px) scale(0.98)';
+
+next.style.zIndex='20';
+
+/* CURRENT OUT */
+
 gsap.to(current,{
 
 opacity:0,
 scale:1.05,
-duration:1,
+duration:0.8,
 
 onComplete:()=>{
 
 current.classList.remove('active');
 
+current.style.display='none';
+
+/* SHOW NEXT */
+
 next.classList.add('active');
 
-gsap.fromTo(next,
+gsap.to(next,{
 
-{
-opacity:0,
-y:40
-},
-
-{
 opacity:1,
 y:0,
-duration:1.2
-}
+scale:1,
+duration:1
 
-);
+});
 
 }
 
 });
 
+/* MUSIC */
+
 document.getElementById('music').play();
+
+/* LETTER */
 
 if(nextId === 'scene3'){
 
+setTimeout(()=>{
+
 typeLetter();
+
+},800);
 
 }
 
@@ -850,33 +915,23 @@ Some become feelings.
 And somehow...
 you became both.
 
-The kind of person whose presence feels comforting.
+The kind of person whose smile
+stays in someone's mind.
 
-The kind of person whose smile stays in someone's mind.
-
-The kind of person who unknowingly becomes important.
+The kind of person whose presence
+feels comforting.
 
 I genuinely hope life gives you:
 
 peace in your heart,
 warmth in your soul,
 success in your dreams,
-and beautiful memories that never fade.
+and beautiful memories that never fade ✨
 
-You deserve happiness.
-Real happiness.
+Celebrate yourself today.
 
-Not just today —
-but in every chapter ahead.
-
-So today...
-
-celebrate yourself.
-
-Celebrate your existence.
-
-Because this world became softer
-the day you were born ✨
+Because the world became softer
+the day you were born ❤️
 
 `;
 
@@ -908,17 +963,25 @@ type();
 }
 
 /* =========================================================
-   GIFTS
+   MEMORY MESSAGE
+========================================================= */
+
+function showMessage(text){
+
+alert(text);
+
+}
+
+/* =========================================================
+   FLOWER EFFECT
 ========================================================= */
 
 function openGift(el){
 
-el.innerHTML='💖';
-
-el.style.background=
-'rgba(255,255,255,0.12)';
-
 explode();
+
+el.style.transform =
+'scale(1.06)';
 
 }
 
