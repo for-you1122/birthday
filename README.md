@@ -17,104 +17,110 @@
 ========================================================= */
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
 }
 
 body{
 
-    overflow:hidden;
-    font-family:'Poppins',sans-serif;
-    color:white;
+overflow-x:hidden;
+overflow-y:auto;
 
-    background:
-    linear-gradient(
-        135deg,
-        #1a0f1f,
-        #2a1021,
-        #4a1d3d,
-        #24122d
-    );
+font-family:'Poppins',sans-serif;
+color:white;
+
+background:
+linear-gradient(
+135deg,
+#1a0f1f,
+#2a1021,
+#4a1d3d,
+#24122d
+);
 
 }
 
 /* =========================================================
-   DREAM LIGHTS
+   GLOW LIGHTS
 ========================================================= */
 
 body::before,
 body::after{
 
-    content:'';
+content:'';
 
-    position:fixed;
+position:fixed;
 
-    width:500px;
-    height:500px;
+width:500px;
+height:500px;
 
-    border-radius:50%;
+border-radius:50%;
 
-    filter:blur(120px);
+filter:blur(120px);
 
-    z-index:-5;
+z-index:-5;
 
 }
 
 body::before{
 
-    background:#ff4d88;
+background:#ff4d88;
 
-    top:-150px;
-    left:-100px;
+top:-150px;
+left:-120px;
 
-    opacity:0.25;
+opacity:0.22;
 
 }
 
 body::after{
 
-    background:#ffd166;
+background:#ffd166;
 
-    bottom:-180px;
-    right:-120px;
+bottom:-180px;
+right:-100px;
 
-    opacity:0.15;
+opacity:0.15;
 
 }
 
 /* =========================================================
-   FLOATING PARTICLES
+   PARTICLES
 ========================================================= */
 
 .particle{
 
-    position:fixed;
+position:fixed;
 
-    width:6px;
-    height:6px;
+width:6px;
+height:6px;
 
-    border-radius:50%;
+background:white;
 
-    background:white;
+border-radius:50%;
 
-    opacity:0.22;
+opacity:0.22;
 
-    z-index:-2;
+z-index:-2;
 
-    animation:float linear infinite;
+animation:float linear infinite;
 
 }
 
 @keyframes float{
 
-    from{
-        transform:translateY(100vh);
-    }
+from{
+transform:translateY(100vh);
+}
 
-    to{
-        transform:translateY(-20vh);
-    }
+to{
+transform:translateY(-20vh);
+}
 
 }
 
@@ -124,31 +130,43 @@ body::after{
 
 .scene{
 
-    position:absolute;
+min-height:100vh;
 
-    inset:0;
+display:none;
 
-    display:none;
+justify-content:center;
+align-items:center;
+flex-direction:column;
 
-    justify-content:center;
-    align-items:center;
-    flex-direction:column;
+padding:80px 30px;
 
-    text-align:center;
+text-align:center;
 
-    padding:40px;
-
-    opacity:0;
+opacity:0;
 
 }
 
 .scene.active{
 
-    display:flex;
+display:flex;
 
-    opacity:1;
+opacity:1;
 
-    z-index:10;
+animation:fadeScene 1s ease forwards;
+
+}
+
+@keyframes fadeScene{
+
+from{
+opacity:0;
+transform:translateY(40px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
 
 }
 
@@ -158,48 +176,64 @@ body::after{
 
 .label{
 
-    letter-spacing:8px;
+letter-spacing:8px;
 
-    opacity:0.7;
+opacity:0.7;
 
-    margin-bottom:25px;
+margin-bottom:25px;
 
-    font-size:13px;
+font-size:13px;
 
 }
 
 .title{
 
-    font-size:7rem;
+font-size:7rem;
 
-    line-height:0.9;
+line-height:0.9;
 
-    font-weight:700;
+font-weight:700;
 
-    background:
-    linear-gradient(
-        90deg,
-        #fffaf2,
-        #ffd166,
-        #ff9ac2
-    );
+background:
+linear-gradient(
+90deg,
+#fffaf2,
+#ffd166,
+#ff9ac2
+);
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 
 }
 
 .text{
 
-    max-width:760px;
+max-width:760px;
 
-    margin-top:35px;
+margin-top:35px;
 
-    line-height:2;
+line-height:2;
 
-    opacity:0.85;
+opacity:0.88;
 
-    font-size:18px;
+font-size:18px;
+
+animation:textFade 2s ease forwards;
+
+}
+
+@keyframes textFade{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:0.88;
+transform:translateY(0);
+}
 
 }
 
@@ -209,35 +243,40 @@ body::after{
 
 .btn{
 
-    margin-top:55px;
+margin-top:55px;
 
-    padding:20px 54px;
+padding:20px 54px;
 
-    border:none;
+border:none;
 
-    border-radius:100px;
+border-radius:100px;
 
-    background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.08);
 
-    color:white;
+color:white;
 
-    letter-spacing:4px;
+letter-spacing:4px;
 
-    cursor:pointer;
+cursor:pointer;
 
-    backdrop-filter:blur(20px);
+backdrop-filter:blur(20px);
 
-    transition:0.4s;
+transition:0.4s;
+
+font-size:14px;
 
 }
 
 .btn:hover{
 
-    transform:
-    translateY(-5px)
-    scale(1.03);
+transform:
+translateY(-5px)
+scale(1.03);
 
-    background:rgba(255,255,255,0.15);
+background:rgba(255,255,255,0.15);
+
+box-shadow:
+0 10px 40px rgba(255,255,255,0.1);
 
 }
 
@@ -247,79 +286,87 @@ body::after{
 
 .memory-wrap{
 
-    display:flex;
+display:flex;
 
-    gap:30px;
+gap:30px;
 
-    flex-wrap:wrap;
+flex-wrap:wrap;
 
-    justify-content:center;
+justify-content:center;
 
-    margin-top:60px;
+margin-top:60px;
 
 }
 
 .memory{
 
-    width:280px;
-    height:380px;
+width:280px;
+height:380px;
 
-    border-radius:30px;
+border-radius:30px;
 
-    overflow:hidden;
+overflow:hidden;
 
-    position:relative;
+position:relative;
 
-    transition:0.5s;
+transition:0.5s;
 
-    cursor:pointer;
+cursor:pointer;
 
-    box-shadow:
-    0 20px 60px rgba(0,0,0,0.35);
+box-shadow:
+0 20px 60px rgba(0,0,0,0.35);
 
 }
 
 .memory:hover{
 
-    transform:
-    translateY(-12px)
-    scale(1.03);
+transform:
+translateY(-12px)
+scale(1.03);
 
 }
 
 .memory img{
 
-    width:100%;
-    height:100%;
+width:100%;
+height:100%;
 
-    object-fit:cover;
+object-fit:cover;
+
+transition:0.5s;
+
+}
+
+.memory:hover img{
+
+transform:scale(1.08);
 
 }
 
 .memory-overlay{
 
-    position:absolute;
+position:absolute;
 
-    inset:0;
+inset:0;
 
-    background:
-    linear-gradient(
-        to top,
-        rgba(0,0,0,0.95),
-        rgba(0,0,0,0.1)
-    );
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,0.95),
+rgba(0,0,0,0.1)
+);
 
-    display:flex;
+display:flex;
 
-    align-items:flex-end;
+align-items:flex-end;
 
-    padding:30px;
+padding:30px;
 
 }
 
 .memory-overlay h3{
 
-    font-size:22px;
+font-size:22px;
 
 }
 
@@ -329,111 +376,119 @@ body::after{
 
 .letter-box{
 
-    width:90%;
-    max-width:950px;
+width:90%;
+max-width:950px;
 
-    background:rgba(255,255,255,0.05);
+max-height:75vh;
 
-    border:1px solid rgba(255,255,255,0.08);
+overflow-y:auto;
 
-    border-radius:40px;
+background:rgba(255,255,255,0.05);
 
-    padding:70px;
+border:1px solid rgba(255,255,255,0.08);
 
-    backdrop-filter:blur(25px);
+border-radius:40px;
+
+padding:70px;
+
+backdrop-filter:blur(25px);
 
 }
 
 #letter{
 
-    white-space:pre-line;
+white-space:pre-line;
 
-    line-height:2.3;
+line-height:2.3;
 
-    font-size:18px;
+font-size:18px;
+
+text-align:left;
 
 }
 
 /* =========================================================
-   FLOWER GIFTS
+   FLOWERS
 ========================================================= */
 
 .gift-wrap{
 
-    display:flex;
+display:flex;
 
-    gap:35px;
+gap:35px;
 
-    flex-wrap:wrap;
+flex-wrap:wrap;
 
-    justify-content:center;
+justify-content:center;
 
-    margin-top:60px;
+margin-top:60px;
 
 }
 
 .gift{
 
-    width:220px;
-    height:300px;
+width:220px;
+height:300px;
 
-    border-radius:35px;
+border-radius:35px;
 
-    overflow:hidden;
+overflow:hidden;
 
-    cursor:pointer;
+cursor:pointer;
 
-    position:relative;
+position:relative;
 
-    transition:0.5s;
+transition:0.5s;
 
-    background:rgba(255,255,255,0.06);
+background:rgba(255,255,255,0.06);
 
-    border:1px solid rgba(255,255,255,0.08);
+border:1px solid rgba(255,255,255,0.08);
 
 }
 
 .gift img{
 
-    width:100%;
-    height:100%;
+width:100%;
+height:100%;
 
-    object-fit:cover;
+object-fit:cover;
 
-    transition:0.5s;
+transition:0.5s;
 
 }
 
 .gift:hover{
 
-    transform:
-    translateY(-12px)
-    scale(1.03);
+transform:
+translateY(-12px)
+scale(1.03);
 
 }
 
 .gift:hover img{
 
-    transform:scale(1.08);
+transform:scale(1.08);
 
 }
 
 .gift-text{
 
-    position:absolute;
+position:absolute;
 
-    bottom:0;
+bottom:0;
 
-    width:100%;
+width:100%;
 
-    padding:20px;
+padding:20px;
 
-    background:
-    linear-gradient(
-        to top,
-        rgba(0,0,0,0.9),
-        transparent
-    );
+background:
+linear-gradient(
+to top,
+rgba(0,0,0,0.9),
+transparent
+);
+
+font-size:18px;
 
 }
 
@@ -443,62 +498,66 @@ body::after{
 
 .final-title{
 
-    font-size:8rem;
+font-size:8rem;
 
-    line-height:0.9;
+line-height:0.9;
 
-    background:
-    linear-gradient(
-        90deg,
-        #fffaf2,
-        #ffd166,
-        #ff9ac2
-    );
+background:
+linear-gradient(
+90deg,
+#fffaf2,
+#ffd166,
+#ff9ac2
+);
 
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
 
 }
 
 .final-text{
 
-    max-width:760px;
+max-width:760px;
 
-    margin-top:40px;
+margin-top:40px;
 
-    line-height:2;
+line-height:2;
 
-    opacity:0.88;
+opacity:0.88;
+
+font-size:18px;
 
 }
 
 /* =========================================================
-   MUSIC
+   MUSIC BUTTON
 ========================================================= */
 
 .music{
 
-    position:fixed;
+position:fixed;
 
-    right:30px;
-    bottom:30px;
+right:30px;
+bottom:30px;
 
-    width:70px;
-    height:70px;
+width:70px;
+height:70px;
 
-    border-radius:50%;
+border-radius:50%;
 
-    border:none;
+border:none;
 
-    background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.08);
 
-    color:white;
+color:white;
 
-    font-size:20px;
+font-size:20px;
 
-    cursor:pointer;
+cursor:pointer;
 
-    z-index:999;
+backdrop-filter:blur(20px);
+
+z-index:999;
 
 }
 
@@ -509,23 +568,27 @@ body::after{
 @media(max-width:900px){
 
 .title{
-    font-size:4rem;
+font-size:4rem;
 }
 
 .final-title{
-    font-size:4rem;
+font-size:4rem;
+}
+
+.text{
+font-size:15px;
 }
 
 .memory{
-    width:90%;
+width:90%;
 }
 
 .gift{
-    width:90%;
+width:90%;
 }
 
 .letter-box{
-    padding:35px;
+padding:35px;
 }
 
 }
@@ -536,7 +599,7 @@ body::after{
 <body>
 
 <!-- ======================================================
-     PARTICLES
+     FLOATING PARTICLES
 ======================================================= -->
 
 <script>
@@ -587,6 +650,10 @@ your smile,
 your happiness,
 and the beautiful person you are ✨
 
+May your life always stay beautiful,
+peaceful,
+and full of unforgettable memories.
+
 </p>
 
 <button class="btn"
@@ -621,29 +688,29 @@ onclick="showMessage('Your smile in this memory was unforgettable ❤️')">
 <img src="assets/photos/photo1.jpg">
 
 <div class="memory-overlay">
-<h3>Beautiful Moments</h3>
+<h3>Beautiful Moments ❤️</h3>
 </div>
 
 </div>
 
 <div class="memory"
-onclick="showMessage('Some conversations stay forever ✨')">
+onclick="showMessage('One of my favorite memories ✨')">
 
 <img src="assets/photos/photo2.jpg">
 
 <div class="memory-overlay">
-<h3>Late Night Talks</h3>
+<h3>Your Beautiful Energy ✨</h3>
 </div>
 
 </div>
 
 <div class="memory"
-onclick="showMessage('One of my favorite memories 🌸')">
+onclick="showMessage('A memory that always makes me smile 🌸')">
 
 <img src="assets/photos/photo3.jpg">
 
 <div class="memory-overlay">
-<h3>Unforgettable Smiles</h3>
+<h3>Forever Memorable 🌸</h3>
 </div>
 
 </div>
@@ -787,9 +854,7 @@ onclick="toggleMusic()">
 </button>
 
 <audio id="music" loop>
-
 <source src="assets/music/song.mp3">
-
 </audio>
 
 <!-- ======================================================
@@ -799,7 +864,7 @@ onclick="toggleMusic()">
 <script>
 
 /* =========================================================
-   OPENING ANIMATION
+   PAGE ANIMATION
 ========================================================= */
 
 gsap.from('.title',{
@@ -830,7 +895,7 @@ duration:1.5
 });
 
 /* =========================================================
-   WORKING SCENE TRANSITION
+   SCENE CHANGE
 ========================================================= */
 
 function nextScene(currentId,nextId){
@@ -841,52 +906,18 @@ document.getElementById(currentId);
 const next =
 document.getElementById(nextId);
 
-/* PREPARE NEXT */
-
-next.style.display='flex';
-
-next.style.opacity='0';
-
-next.style.transform='translateY(40px) scale(0.98)';
-
-next.style.zIndex='20';
-
-/* CURRENT OUT */
-
-gsap.to(current,{
-
-opacity:0,
-scale:1.05,
-duration:0.8,
-
-onComplete:()=>{
-
 current.classList.remove('active');
-
-current.style.display='none';
-
-/* SHOW NEXT */
 
 next.classList.add('active');
 
-gsap.to(next,{
+window.scrollTo({
 
-opacity:1,
-y:0,
-scale:1,
-duration:1
+top:0,
+behavior:'smooth'
 
 });
-
-}
-
-});
-
-/* MUSIC */
 
 document.getElementById('music').play();
-
-/* LETTER */
 
 if(nextId === 'scene3'){
 
@@ -894,14 +925,14 @@ setTimeout(()=>{
 
 typeLetter();
 
-},800);
+},500);
 
 }
 
 }
 
 /* =========================================================
-   LETTER TYPING
+   LETTER TYPE
 ========================================================= */
 
 const text = `
@@ -963,7 +994,7 @@ type();
 }
 
 /* =========================================================
-   MEMORY MESSAGE
+   MEMORY POPUP
 ========================================================= */
 
 function showMessage(text){
@@ -980,13 +1011,12 @@ function openGift(el){
 
 explode();
 
-el.style.transform =
-'scale(1.06)';
+el.style.transform='scale(1.06)';
 
 }
 
 /* =========================================================
-   PARTICLE EXPLOSION
+   SPARKLES
 ========================================================= */
 
 function explode(){
