@@ -752,7 +752,7 @@ BIRTHDAY
 
 Happy Birthday ❤️
 
-Today is all about celebrating you,
+Today is all about you,
 your smile,
 your happiness,
 and the beautiful person you are ✨
@@ -1042,8 +1042,8 @@ and beautiful memories that never fade ✨
 
 Celebrate yourself today.
 
-Because the world became softer
-the day you were born ❤️
+Because its your day 
+and i hope you will get all the happiness you deserve ❤️
 
 `;
 
