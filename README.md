@@ -6,8 +6,10 @@
 
 <title>Birthday Universe ✨</title>
 
+<!-- GOOGLE FONT -->
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
+<!-- GSAP -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
 <style>
@@ -22,32 +24,40 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
 
-    font-family:'Poppins',sans-serif;
-
     overflow:hidden;
-
+    font-family:'Poppins',sans-serif;
     color:white;
 
     background:
     linear-gradient(
         135deg,
-        #120b14,
+        #1a0f1f,
         #2a1021,
-        #43233a,
-        #1f1228
+        #4a1d3d,
+        #24122d
     );
 
 }
 
 /* =========================================================
-   DREAMY BACKGROUND LIGHTS
+   DREAM LIGHTS
 ========================================================= */
 
-.bg-light{
+body::before,
+body::after{
+
+    content:'';
 
     position:fixed;
+
+    width:500px;
+    height:500px;
 
     border-radius:50%;
 
@@ -55,56 +65,32 @@ body{
 
     z-index:-5;
 
-    animation:floatLight 8s ease-in-out infinite;
-
 }
 
-.light1{
-
-    width:450px;
-    height:450px;
+body::before{
 
     background:#ff4d88;
 
-    top:-120px;
-    left:-120px;
+    top:-150px;
+    left:-100px;
 
     opacity:0.25;
 
 }
 
-.light2{
-
-    width:500px;
-    height:500px;
+body::after{
 
     background:#ffd166;
 
     bottom:-180px;
     right:-100px;
 
-    opacity:0.18;
-
-}
-
-@keyframes floatLight{
-
-    0%{
-        transform:translateY(0px);
-    }
-
-    50%{
-        transform:translateY(40px);
-    }
-
-    100%{
-        transform:translateY(0px);
-    }
+    opacity:0.15;
 
 }
 
 /* =========================================================
-   FLOATING PARTICLES
+   PARTICLES
 ========================================================= */
 
 .particle{
@@ -145,29 +131,30 @@ body{
 .scene{
 
     position:absolute;
-
     inset:0;
 
     display:none;
 
     justify-content:center;
-
     align-items:center;
-
     flex-direction:column;
 
     text-align:center;
 
     padding:40px;
 
+    transition:1s;
+
 }
 
-.active{
+.scene.active{
+
     display:flex;
+
 }
 
 /* =========================================================
-   HERO
+   TEXT
 ========================================================= */
 
 .label{
@@ -184,11 +171,11 @@ body{
 
 }
 
-.hero-title{
+.title{
 
-    font-size:8rem;
+    font-size:7rem;
 
-    line-height:0.88;
+    line-height:0.9;
 
     font-weight:700;
 
@@ -203,21 +190,17 @@ body{
     -webkit-background-clip:text;
     -webkit-text-fill-color:transparent;
 
-    opacity:0;
-
-    transform:translateY(80px);
-
 }
 
-.hero-text{
+.text{
 
     max-width:760px;
 
-    margin-top:40px;
+    margin-top:35px;
 
     line-height:2;
 
-    opacity:0.82;
+    opacity:0.85;
 
     font-size:18px;
 
@@ -233,34 +216,41 @@ body{
 
     padding:20px 54px;
 
-    border-radius:100px;
-
     border:none;
+
+    border-radius:100px;
 
     background:rgba(255,255,255,0.08);
 
     color:white;
 
-    backdrop-filter:blur(20px);
-
     letter-spacing:4px;
 
     cursor:pointer;
 
+    backdrop-filter:blur(20px);
+
     transition:0.4s;
+
+    font-size:14px;
 
 }
 
 .btn:hover{
 
-    transform:translateY(-5px) scale(1.03);
+    transform:
+    translateY(-5px)
+    scale(1.03);
 
     background:rgba(255,255,255,0.15);
+
+    box-shadow:
+    0 10px 40px rgba(255,255,255,0.12);
 
 }
 
 /* =========================================================
-   MEMORY CARDS
+   MEMORY SECTION
 ========================================================= */
 
 .memory-wrap{
@@ -288,14 +278,12 @@ body{
 
     position:relative;
 
-    cursor:pointer;
-
     transition:0.5s;
 
-    background:#111;
+    cursor:pointer;
 
     box-shadow:
-    0 10px 40px rgba(0,0,0,0.3);
+    0 20px 60px rgba(0,0,0,0.35);
 
 }
 
@@ -325,8 +313,8 @@ body{
     background:
     linear-gradient(
         to top,
-        rgba(0,0,0,0.9),
-        rgba(0,0,0,0.1)
+        rgba(0,0,0,0.95),
+        rgba(0,0,0,0.15)
     );
 
     display:flex;
@@ -366,13 +354,63 @@ body{
 
 #letter{
 
+    white-space:pre-line;
+
     line-height:2.3;
 
     font-size:18px;
 
-    white-space:pre-line;
-
     opacity:0.9;
+
+}
+
+/* =========================================================
+   GIFTS
+========================================================= */
+
+.gift-wrap{
+
+    display:flex;
+
+    gap:35px;
+
+    margin-top:60px;
+
+    flex-wrap:wrap;
+
+    justify-content:center;
+
+}
+
+.gift{
+
+    width:180px;
+    height:180px;
+
+    border-radius:35px;
+
+    background:rgba(255,255,255,0.06);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    font-size:70px;
+
+    cursor:pointer;
+
+    transition:0.5s;
+
+}
+
+.gift:hover{
+
+    transform:
+    translateY(-10px)
+    rotate(4deg);
 
 }
 
@@ -401,13 +439,45 @@ body{
 
 .final-text{
 
-    max-width:700px;
+    max-width:760px;
 
     margin-top:40px;
 
     line-height:2;
 
-    opacity:0.85;
+    opacity:0.88;
+
+}
+
+/* =========================================================
+   MUSIC BUTTON
+========================================================= */
+
+.music{
+
+    position:fixed;
+
+    right:30px;
+    bottom:30px;
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    border:none;
+
+    background:rgba(255,255,255,0.08);
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(20px);
+
+    z-index:999;
 
 }
 
@@ -417,16 +487,20 @@ body{
 
 @media(max-width:900px){
 
-.hero-title{
-    font-size:4.5rem;
+.title{
+    font-size:4rem;
 }
 
 .final-title{
     font-size:4rem;
 }
 
-.hero-text{
+.text{
     font-size:15px;
+}
+
+.memory{
+    width:90%;
 }
 
 .letter-box{
@@ -435,54 +509,18 @@ body{
 
 }
 
-/* =========================================================
-   FADE
-========================================================= */
-
-.fade-out{
-    animation:fadeOut 1s forwards;
-}
-
-.fade-in{
-    animation:fadeIn 1s forwards;
-}
-
-@keyframes fadeOut{
-
-    to{
-        opacity:0;
-        transform:scale(1.05);
-    }
-
-}
-
-@keyframes fadeIn{
-
-    from{
-        opacity:0;
-    }
-
-    to{
-        opacity:1;
-    }
-
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- DREAMY LIGHTS -->
-
-<div class="bg-light light1"></div>
-<div class="bg-light light2"></div>
-
-<!-- PARTICLES -->
+<!-- ======================================================
+     FLOATING PARTICLES
+======================================================= -->
 
 <script>
 
-for(let i=0;i<40;i++){
+for(let i=0;i<50;i++){
 
     const particle =
     document.createElement('div');
@@ -493,10 +531,10 @@ for(let i=0;i<40;i++){
     Math.random()*100 + 'vw';
 
     particle.style.animationDuration =
-    5 + Math.random()*10 + 's';
+    6 + Math.random()*10 + 's';
 
     particle.style.opacity =
-    Math.random()*0.4;
+    Math.random()*0.5;
 
     document.body.appendChild(particle);
 
@@ -514,28 +552,33 @@ for(let i=0;i<40;i++){
 FOR SOMEONE SPECIAL
 </p>
 
-<h1 class="hero-title">
+<h1 class="title">
 HAPPY<br>
 BIRTHDAY
 </h1>
 
-<p class="hero-text">
+<p class="text">
 
-Some people enter life quietly...
+Happy Birthday ❤️
 
-but somehow make everything feel softer,
-warmer,
-and more beautiful.
+Today is all about celebrating you,
+your smile,
+your happiness,
+and the beautiful person you are.
 
-This experience was created
-to celebrate not just your birthday —
-
-but your existence ✨
+May this year bring you
+beautiful memories,
+peaceful moments,
+endless laughter,
+and everything your heart truly deserves ✨
 
 </p>
 
-<button class="btn" onclick="nextScene(1,2)">
+<button class="btn"
+onclick="nextScene('scene1','scene2')">
+
 ENTER THE EXPERIENCE
+
 </button>
 
 </section>
@@ -550,9 +593,9 @@ ENTER THE EXPERIENCE
 MEMORIES
 </p>
 
-<h1 class="hero-title" style="font-size:6rem;">
-MOMENTS<br>
-THAT STAY
+<h1 class="title">
+OUR<br>
+MEMORIES
 </h1>
 
 <div class="memory-wrap">
@@ -562,7 +605,7 @@ THAT STAY
 <img src="assets/photos/photo1.jpg">
 
 <div class="memory-overlay">
-<h3>Beautiful Memories</h3>
+<h3>Beautiful Moments</h3>
 </div>
 
 </div>
@@ -589,8 +632,11 @@ THAT STAY
 
 </div>
 
-<button class="btn" onclick="nextScene(2,3)">
+<button class="btn"
+onclick="nextScene('scene2','scene3')">
+
 CONTINUE
+
 </button>
 
 </section>
@@ -611,8 +657,11 @@ A LETTER
 
 </div>
 
-<button class="btn" onclick="nextScene(3,4)">
-FINAL SURPRISE
+<button class="btn"
+onclick="nextScene('scene3','scene4')">
+
+OPEN SURPRISE
+
 </button>
 
 </section>
@@ -622,6 +671,46 @@ FINAL SURPRISE
 ======================================================= -->
 
 <section class="scene" id="scene4">
+
+<p class="label">
+SURPRISES
+</p>
+
+<h1 class="title">
+LITTLE<br>
+SURPRISES
+</h1>
+
+<div class="gift-wrap">
+
+<div class="gift" onclick="openGift(this)">
+🎁
+</div>
+
+<div class="gift" onclick="openGift(this)">
+🎁
+</div>
+
+<div class="gift" onclick="openGift(this)">
+🎁
+</div>
+
+</div>
+
+<button class="btn"
+onclick="nextScene('scene4','scene5')">
+
+FINAL WISH
+
+</button>
+
+</section>
+
+<!-- ======================================================
+     SCENE 5
+======================================================= -->
+
+<section class="scene" id="scene5">
 
 <h1 class="final-title">
 HAPPY<br>
@@ -648,7 +737,13 @@ the day you were born ✨
 
 </section>
 
-<!-- MUSIC -->
+<!-- ======================================================
+     MUSIC
+======================================================= -->
+
+<button class="music" onclick="toggleMusic()">
+🎵
+</button>
 
 <audio id="music" loop>
 <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8e0b4f6.mp3?filename=romantic-background-11254.mp3">
@@ -660,64 +755,100 @@ the day you were born ✨
    HERO ANIMATION
 ========================================================= */
 
-gsap.to('.hero-title',{
+gsap.from('.title',{
 
-    opacity:1,
-    y:0,
+    y:80,
+    opacity:0,
     duration:1.8,
     ease:'power3.out'
 
 });
 
+gsap.from('.text',{
+
+    y:40,
+    opacity:0,
+    delay:0.5,
+    duration:1.8
+
+});
+
+gsap.from('.btn',{
+
+    y:30,
+    opacity:0,
+    delay:1,
+    duration:1.5
+
+});
+
 /* =========================================================
-   SCENE TRANSITIONS
+   SCENE CHANGE
 ========================================================= */
 
-function nextScene(current,next){
+function nextScene(currentId,nextId){
 
-    const currentScene =
-    document.getElementById(`scene${current}`);
+const current =
+document.getElementById(currentId);
 
-    const nextScene =
-    document.getElementById(`scene${next}`);
+const next =
+document.getElementById(nextId);
 
-    currentScene.classList.add('fade-out');
+gsap.to(current,{
 
-    setTimeout(()=>{
+opacity:0,
+scale:1.05,
+duration:1,
 
-        currentScene.classList.remove('active');
+onComplete:()=>{
 
-        nextScene.classList.add('active');
+current.classList.remove('active');
 
-        nextScene.classList.add('fade-in');
+next.classList.add('active');
 
-    },900);
+gsap.fromTo(next,
 
-    document.getElementById('music').play();
+{
+opacity:0,
+y:40
+},
 
-    if(next === 3){
+{
+opacity:1,
+y:0,
+duration:1.2
+}
 
-        typeLetter();
+);
 
-    }
+}
+
+});
+
+document.getElementById('music').play();
+
+if(nextId === 'scene3'){
+
+typeLetter();
+
+}
 
 }
 
 /* =========================================================
-   TYPING LETTER
+   LETTER TYPING
 ========================================================= */
 
 const text = `
 
 Happy Birthday ❤️
 
-There are some people
-who become memories.
+Some people become memories.
 
-And then there are people
-who become feelings.
+Some become feelings.
 
-You became both.
+And somehow...
+you became both.
 
 The kind of person whose presence feels comforting.
 
@@ -753,26 +884,109 @@ let i = 0;
 
 function type(){
 
-    if(i < text.length){
+if(i < text.length){
 
-        document.getElementById('letter')
-        .innerHTML += text.charAt(i);
+document.getElementById('letter')
+.innerHTML += text.charAt(i);
 
-        i++;
+i++;
 
-        setTimeout(type,38);
+setTimeout(type,38);
 
-    }
+}
 
 }
 
 function typeLetter(){
 
-    document.getElementById('letter').innerHTML='';
+document.getElementById('letter').innerHTML='';
 
-    i=0;
+i=0;
 
-    type();
+type();
+
+}
+
+/* =========================================================
+   GIFTS
+========================================================= */
+
+function openGift(el){
+
+el.innerHTML='💖';
+
+el.style.background=
+'rgba(255,255,255,0.12)';
+
+explode();
+
+}
+
+/* =========================================================
+   PARTICLE EXPLOSION
+========================================================= */
+
+function explode(){
+
+for(let i=0;i<70;i++){
+
+let spark =
+document.createElement('div');
+
+spark.innerHTML='✨';
+
+spark.style.position='fixed';
+
+spark.style.left=
+Math.random()*100+'vw';
+
+spark.style.top=
+Math.random()*100+'vh';
+
+spark.style.fontSize='20px';
+
+spark.style.pointerEvents='none';
+
+spark.style.zIndex='9999';
+
+document.body.appendChild(spark);
+
+gsap.to(spark,{
+
+y:-120,
+opacity:0,
+duration:1.5,
+
+onComplete:()=>{
+
+spark.remove();
+
+}
+
+});
+
+}
+
+}
+
+/* =========================================================
+   MUSIC
+========================================================= */
+
+function toggleMusic(){
+
+const m =
+document.getElementById('music');
+
+if(m.paused){
+
+m.play();
+
+}else{
+
+m.pause();
+
+}
 
 }
 
