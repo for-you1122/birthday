@@ -791,7 +791,7 @@ onclick="memoryPopup(
 'Your smile is honestly unforgettable. The kind of smile that stays in someone’s mind long after the moment passes. Every time you smiled in this memory, everything around felt lighter and happier ✨'
 )">
 
-<img src="assets/photos/photo1.jpg">
+<img src="photo1.jpeg">
 
 <div class="memory-overlay">
 <h3>Beautiful Moments ❤️</h3>
@@ -805,7 +805,7 @@ onclick="memoryPopup(
 'There is something about your energy that feels peaceful and beautiful. The way you talk, laugh, and exist naturally makes moments feel special. Some people simply carry warmth within them — and you are one of them ❤️'
 )">
 
-<img src="assets/photos/photo2.jpg">
+<img src="photo2.jpeg">
 
 <div class="memory-overlay">
 <h3>Beautiful Energy ✨</h3>
@@ -819,7 +819,7 @@ onclick="memoryPopup(
 'Your smile, your personality, your caring nature, your laughter — all of it creates memories that never really fade. Some people are remembered because of moments. But some are remembered because of how they make people feel ❤️'
 )">
 
-<img src="assets/photos/photo3.jpg">
+<img src="photo3.jpeg">
 
 <div class="memory-overlay">
 <h3>Forever Memories 🌸</h3>
