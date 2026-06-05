@@ -883,7 +883,7 @@ SURPRISES
 <div class="gift"
 onclick="roseRain()">
 
-<img src="assets/gifts/rose.jpg">
+<img src="photo5.jpg">
 
 <div class="gift-text">
 Roses For You 🌹
@@ -897,7 +897,7 @@ onclick="memoryPopup(
 'I genuinely hope your life is always filled with happiness, peace, beautiful memories, success, and people who truly value your heart ❤️'
 )">
 
-<img src="photo5.jpg">
+<img src="photo4.jpeg">
 
 <div class="gift-text">
 A Bouquet Of Happiness 💐
@@ -911,7 +911,7 @@ onclick="memoryPopup(
 'No flower, no sunset, and no beautiful thing in this world could ever truly compare to your beauty — not just outside, but the beauty of your heart, smile, and soul ❤️'
 )">
 
-<img src="assets/gifts/tulips.jpg">
+<img src="photo6.jpg">
 
 <div class="gift-text">
 Beautiful Like You ✨
