@@ -750,7 +750,7 @@ BIRTHDAY
 
 <p class="text">
 
-Happy Birthday ❤️
+Happy Birthday Ginni ❤️
 
 Today is all about you,
 your smile,
@@ -938,7 +938,7 @@ SCENE 5 FINAL
 
 <h1 class="final-title">
 HAPPY<br>
-BIRTHDAY ❤️
+BIRTHDAY GINNI❤️
 </h1>
 
 <p class="final-text">
@@ -1018,7 +1018,7 @@ LETTER
 
 const text = `
 
-Happy Birthday ❤️
+Happy Birthday GINNI❤️
 
 Some people become memories.
 
